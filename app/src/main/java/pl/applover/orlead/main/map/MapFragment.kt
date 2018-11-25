@@ -11,6 +11,7 @@ import com.google.android.gms.maps.model.Polyline
 import kotlinx.android.synthetic.main.fragment_map.*
 import pl.applover.orlead.*
 import pl.applover.orlead.main.utils.GoogleMapPadding
+import pl.applover.orlead.model.ResponseVehicles
 
 /**
  * Created by janpawlov ( ͡° ͜ʖ ͡°) on 24/11/2018.
@@ -20,6 +21,7 @@ class MapFragment : MapBV(), MapV {
 
     private var mOnMapViewReadyListener: OnMapViewReadyListener? = null
     val googleMapPadding: GoogleMapPadding? by lazy { arguments?.getParcelable<GoogleMapPadding>("googleMapPadding") }
+    val responseVehicles: ResponseVehicles? by lazy { arguments?.getParcelable<ResponseVehicles>("responseVehicles") }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_map, container, false)
@@ -52,7 +54,7 @@ class MapFragment : MapBV(), MapV {
             52.594993, 19.650641,
             52.594899, 19.653507,
             52.593065, 19.653447,
-            52.592736, 19.656857,
+            52.591316, 19.653398,
             52.591277, 19.656769,
             52.591179, 19.662670,
             52.591114, 19.668560,
@@ -63,10 +65,12 @@ class MapFragment : MapBV(), MapV {
             52.588016, 19.685743, 52.587996, 19.689989
         )
         mPresenter.drawRoute(polyline, R.color.colorAccent)
+        //mPresenter.setCameraPosition(arrayListOf(LatLng(52.594993, 19.650641), LatLng(52.587996, 19.689989)), true)
+        mPresenter.setCameraPosition(LatLng(52.591277, 19.656769))
     }
 
     override fun onPolylineClick(polyline: Polyline?) {
-        Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, "3,38km", Toast.LENGTH_SHORT).show()
     }
 
     private fun setCameraPosition(latLng: LatLng) {
@@ -86,9 +90,15 @@ class MapFragment : MapBV(), MapV {
     }
 
     companion object {
-        fun newInstance(googleMapPadding: GoogleMapPadding? = null): MapFragment {
+        fun newInstance(
+            responseVehicles: ResponseVehicles? = null,
+            googleMapPadding: GoogleMapPadding? = null
+        ): MapFragment {
             val fragment = MapFragment()
             with(Bundle()) {
+                responseVehicles?.let {
+                    putParcelable("responseVehicles", it)
+                }
                 googleMapPadding?.let {
                     putParcelable("googleMapPadding", googleMapPadding)
                 }

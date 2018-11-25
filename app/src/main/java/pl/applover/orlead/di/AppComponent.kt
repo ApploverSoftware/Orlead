@@ -4,6 +4,7 @@ import android.content.Context
 import dagger.BindsInstance
 import dagger.Component
 import pl.applover.orlead.main.MainApp
+import pl.applover.orlead.main.route.RoutePresenter
 import pl.applover.orlead.main.vehicle.VehiclePresenter
 import javax.inject.Singleton
 
@@ -26,5 +27,6 @@ interface AppComponent {
     }
 
     fun inject(presenter: VehiclePresenter)
+    fun inject(presenter: RoutePresenter)
 
 }

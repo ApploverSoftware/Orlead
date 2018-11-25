@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">Orlead</string>
     <string name="googleApiKey">AIzaSyCa9I3tIpnrAj5O9dKdXhpunEE3Cyxn0hk</string>
+    <string name="type_plate">Type in your \nlicense plate number</string>
+    <string name="plate_number_hint">Plate number</string>
+    <string name="route">Route</string>
+    <string name="proceed">Proceed</string>
+    <string name="no_route_found">No route found!</string>
+    <string name="destination_place">Destination place</string>
+    <string name="enter_gate">Enter gate</string>
+    <string name="choose_route">Please choose route</string>
+    <string name="error">An error occurred</string>
 </resources>

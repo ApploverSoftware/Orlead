@@ -34,12 +34,18 @@ class VehiclePresenter : VehicleBP(), VehicleP {
             })
     }
 
-    override fun getVehicle() {
-        mApi.getVehicle("KWA2137").subscribeOn(Schedulers.io())
+    override fun getVehicle(plate: String) {
+        mApi.getVehicle(plate).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread()).subscribe({
                 Log.d("GetVehicle", "Success")
+                it.body()?.let {
+                    mView?.routeDefined(it)
+                } ?: kotlin.run {
+                    mView?.noRouteDefined()
+                }
             }, {
                 it.printStackTrace()
+                mView?.onError()
             })
     }
 }

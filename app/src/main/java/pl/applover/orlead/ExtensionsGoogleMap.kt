@@ -2,14 +2,15 @@ package pl.applover.orlead
 
 import android.content.Context
 import android.graphics.BitmapFactory
+import android.graphics.Color
 import android.support.v4.content.ContextCompat
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.*
 import pl.applover.orlead.main.MainApp
 
-fun GoogleMap.setCameraPosition(latLng: LatLng, animateCamera: Boolean = false) {
-    val cameraPosition = CameraPosition.Builder().target(latLng).zoom(12f).build()
+fun GoogleMap.setCameraPosition(latLng: LatLng, animateCamera: Boolean = true) {
+    val cameraPosition = CameraPosition.Builder().target(latLng).zoom(13f).build()
     if (animateCamera) {
         animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
     } else {
@@ -20,7 +21,7 @@ fun GoogleMap.setCameraPosition(latLng: LatLng, animateCamera: Boolean = false) 
 /**
  * Method needs at least one latLng
  */
-fun GoogleMap.setCameraPosition(latLngs: ArrayList<LatLng>, animateCamera: Boolean = false, padding: Int = 10) {
+fun GoogleMap.setCameraPosition(latLngs: ArrayList<LatLng>, animateCamera: Boolean = false, padding: Int = 2) {
     if (latLngs.isEmpty()) {
         return
     }
@@ -55,19 +56,16 @@ fun GoogleMap.drawPolyline(
     width: Float = 5f,
     context: Context = MainApp.instance
 ): Polyline {
-    val arrow = context.getBitmapFromVectorDrawable(R.drawable.ic_circle)
-    val cross = context.getBitmapFromVectorDrawable(R.drawable.ic_close)
-    val startCap = CustomCap(BitmapDescriptorFactory.fromBitmap(arrow), 10f)
-    val endCap = CustomCap(BitmapDescriptorFactory.fromBitmap(cross), 10f)
+    val startCap = CustomCap(BitmapDescriptorFactory.fromResource(R.drawable.route_cap), 10f)
+    val endCap = CustomCap(BitmapDescriptorFactory.fromResource(R.drawable.route_end_cap), 10f)
     return addPolyline(
         PolylineOptions()
             .addAll(latLngs)
             .startCap(startCap)
             .endCap(endCap)
-            .jointType(JointType.ROUND)
             .clickable(true)
             .width(width)
-            .color(ContextCompat.getColor(context, colorRid))
+            .color(Color.BLACK)
     )
 }
 

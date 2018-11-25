@@ -9,6 +9,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import pl.applover.orlead.BuildConfig
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
@@ -26,7 +27,6 @@ class BackendModule {
         @Suppress("ConstantConditionIf")
         val baseUrl = "https://hack-yeaaah.herokuapp.com/"
 
-
         val logging = HttpLoggingInterceptor().also {
             it.level = if (BuildConfig.DEBUG)
                 HttpLoggingInterceptor.Level.BODY
@@ -42,7 +42,7 @@ class BackendModule {
 
         val retrofit = Retrofit.Builder()
             .baseUrl(baseUrl)
-            .addConverterFactory(MoshiConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.createAsync())
             .client(okHttpClient)
             .build()

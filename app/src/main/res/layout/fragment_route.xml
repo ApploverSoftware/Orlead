@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:background="@android:color/white"
+              android:gravity="center"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <ImageView
+            android:layout_width="wrap_content"
+            android:src="@drawable/ic_delivery_fast"
+            android:layout_height="wrap_content"/>
+
+    <TextView android:layout_width="wrap_content"
+              android:textColor="@android:color/black"
+              android:text="@string/no_route_found"
+              android:gravity="center"
+              android:layout_margin="12dp"
+              android:textSize="16sp"
+              android:lineSpacingExtra="5dp"
+              android:textAllCaps="true"
+              android:layout_height="wrap_content"/>
+
+    <TextView android:layout_width="wrap_content"
+              android:textColor="@android:color/black"
+              android:text="@string/destination_place"
+              android:gravity="center"
+              android:layout_margin="12dp"
+              android:textSize="16sp"
+              android:lineSpacingExtra="5dp"
+              android:textAllCaps="true"
+              android:layout_height="wrap_content"/>
+
+    <TextView android:layout_width="match_parent"
+              android:textColor="@android:color/white"
+              android:id="@+id/destinationPlace"
+              android:text="@string/destination_place"
+              android:gravity="center"
+              android:drawableEnd="@drawable/ic_arrow_down"
+              android:paddingEnd="8dp"
+              android:paddingStart="8dp"
+              android:layout_margin="12dp"
+              android:textSize="16sp"
+              android:background="@drawable/shape_button_background"
+              android:lineSpacingExtra="5dp"
+              android:textAllCaps="true"
+              android:layout_height="48dp"/>
+
+    <TextView android:layout_width="wrap_content"
+              android:textColor="@android:color/black"
+              android:text="@string/enter_gate"
+              android:gravity="center"
+              android:layout_margin="12dp"
+              android:textSize="16sp"
+              android:lineSpacingExtra="5dp"
+              android:textAllCaps="true"
+              android:layout_height="wrap_content"/>
+
+    <TextView android:layout_width="match_parent"
+              android:id="@+id/enterGate"
+              android:textColor="@android:color/white"
+              android:text="@string/enter_gate"
+              android:gravity="center"
+              android:drawableEnd="@drawable/ic_arrow_down"
+              android:paddingEnd="8dp"
+              android:paddingStart="8dp"
+              android:layout_margin="12dp"
+              android:textSize="16sp"
+              android:background="@drawable/shape_button_background"
+              android:lineSpacingExtra="5dp"
+              android:textAllCaps="true"
+              android:layout_height="48dp"/>
+
+    <Button android:layout_width="match_parent"
+            android:id="@+id/routeProceedButton"
+            android:layout_margin="12dp"
+            android:textColor="@android:color/white"
+            android:text="@string/proceed"
+            android:layout_marginEnd="24dp"
+            android:textColorHint="@android:color/darker_gray"
+            android:hint="@string/plate_number_hint"
+            android:gravity="center"
+            android:background="@drawable/shape_button_background"
+            android:layout_height="48dp"/>
+
+    <ProgressBar android:layout_width="wrap_content"
+                 android:id="@+id/routeProgress"
+                 android:indeterminateTint="@color/colorAccent"
+                 android:layout_marginTop="12dp"
+                 android:visibility="invisible"
+                 tools:visibility="visible"
+                 android:layout_height="wrap_content"/>
+
+
+</LinearLayout>
