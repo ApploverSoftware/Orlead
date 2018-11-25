@@ -1,4 +1,4 @@
-package pl.applover.orlead.main.di
+package pl.applover.orlead.di
 
 import android.content.Context
 import dagger.BindsInstance

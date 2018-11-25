@@ -11,7 +11,6 @@ import pl.applover.orlead.main.vehicle.VehicleContract
  * Created by janpawlov ( ͡° ͜ʖ ͡°) on 24/11/2018.
  */
 typealias MainActivityV = MainContract.View
-
 typealias MainActivityP = MainContract.Presenter
 typealias MainActivityBV = BaseActivity<MainActivityV, MainActivityP>
 typealias MainActivityBP = BasePresenter<MainActivityV>

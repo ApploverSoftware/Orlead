@@ -23,7 +23,7 @@ import java.util.*
 /**
  * Created by janpawlov ( ͡° ͜ʖ ͡°) on 24/11/2018.
  */
-class MapPresenter : MapBP(), MapP {
+class MapPresenter : MapBP(), MapP, GoogleMap.OnPolylineClickListener {
 
     private var googleMap: GoogleMap? = null
 
@@ -42,10 +42,15 @@ class MapPresenter : MapBP(), MapP {
             mView?.let {
                 googleMap!!.isMyLocationEnabled = true
                 //googleMap!!.setMapStyle(MapStyleOptions.loadRawResourceStyle(mView?.getContext()!!,R.raw.map_style))
+                googleMap?.setOnPolylineClickListener(this)
                 mView?.onMapViewReady(googleMap!!)
                 setCameraPosition(LatLng(52.588091, 19.679209))
             }
         }
+    }
+
+    override fun onPolylineClick(p0: Polyline?) {
+        mView?.onPolylineClick(p0)
     }
 
     override fun setOnMarkerDragListener(onMarkerDragListener: GoogleMap.OnMarkerDragListener) {

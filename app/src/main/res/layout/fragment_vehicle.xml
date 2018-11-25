@@ -3,4 +3,14 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
+    <Button android:layout_width="wrap_content"
+            android:id="@+id/postVehicle"
+            android:text="REJESTRUJ FURE"
+            android:layout_height="wrap_content"/>
+
+    <Button android:layout_width="wrap_content"
+            android:text="OPCJA WZIENIA FURY"
+            android:id="@+id/getVehicle"
+            android:layout_height="wrap_content"/>
+
 </LinearLayout>

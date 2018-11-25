@@ -4,13 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Polyline
 import kotlinx.android.synthetic.main.fragment_map.*
-import pl.applover.orlead.MapBV
-import pl.applover.orlead.MapP
-import pl.applover.orlead.MapV
-import pl.applover.orlead.R
+import pl.applover.orlead.*
 import pl.applover.orlead.main.utils.GoogleMapPadding
 
 /**
@@ -48,8 +47,27 @@ class MapFragment : MapBV(), MapV {
 
     override fun onMapViewReady(googleMap: GoogleMap) {
         mOnMapViewReadyListener?.onMapViewReady(googleMap)
+
+        val polyline = getArrayOfLatLongs(
+            52.594993, 19.650641,
+            52.594899, 19.653507,
+            52.593065, 19.653447,
+            52.592736, 19.656857,
+            52.591277, 19.656769,
+            52.591179, 19.662670,
+            52.591114, 19.668560,
+            52.589363, 19.668452,
+            52.589259, 19.673345,
+            52.589233, 19.679310,
+            52.588094, 19.679241,
+            52.588016, 19.685743, 52.587996, 19.689989
+        )
+        mPresenter.drawRoute(polyline, R.color.colorAccent)
     }
 
+    override fun onPolylineClick(polyline: Polyline?) {
+        Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
+    }
 
     private fun setCameraPosition(latLng: LatLng) {
         mPresenter.setCameraPosition(latLng)

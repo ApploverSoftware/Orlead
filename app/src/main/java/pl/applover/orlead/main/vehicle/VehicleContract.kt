@@ -8,5 +8,8 @@ import pl.applover.kotlinmvp.BaseMvpView
  */
 interface VehicleContract {
     interface View : BaseMvpView
-    interface Presenter : BaseMvpPresenter<View>
+    interface Presenter : BaseMvpPresenter<View>{
+        fun postVehicle()
+        fun getVehicle()
+    }
 }

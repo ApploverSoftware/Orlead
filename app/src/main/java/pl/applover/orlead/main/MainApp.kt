@@ -7,8 +7,8 @@ import android.location.Location
 import android.location.LocationManager
 import pl.applover.orlead.DelegatesExt
 import pl.applover.orlead.DelegatesExt.notNullSingleValue
-import pl.applover.orlead.main.di.AppComponent
-import pl.applover.orlead.main.di.DaggerAppComponent
+import pl.applover.orlead.di.AppComponent
+import pl.applover.orlead.di.DaggerAppComponent
 
 
 /**

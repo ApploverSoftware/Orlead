@@ -19,6 +19,7 @@ import pl.applover.orlead.main.utils.GoogleMapPadding
 interface MapContract {
     interface View : BaseMvpView {
         fun onMapViewReady(googleMap: GoogleMap)
+        fun onPolylineClick(polyline: Polyline?)
     }
 
     interface Presenter : BaseMvpPresenter<View> {

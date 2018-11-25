@@ -1,6 +1,7 @@
 package pl.applover.orlead
 
 import android.content.Context
+import android.graphics.BitmapFactory
 import android.support.v4.content.ContextCompat
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -48,11 +49,26 @@ fun GoogleMap.setRangeCircle(circleOptions: CircleOptions): Circle {
     return addCircle(circleOptions)
 }
 
-fun GoogleMap.drawPolyline(latLngs: ArrayList<LatLng>, colorRid: Int, width: Float = 5f, context: Context = MainApp.instance): Polyline {
-    return addPolyline(PolylineOptions()
+fun GoogleMap.drawPolyline(
+    latLngs: ArrayList<LatLng>,
+    colorRid: Int,
+    width: Float = 5f,
+    context: Context = MainApp.instance
+): Polyline {
+    val arrow = context.getBitmapFromVectorDrawable(R.drawable.ic_circle)
+    val cross = context.getBitmapFromVectorDrawable(R.drawable.ic_close)
+    val startCap = CustomCap(BitmapDescriptorFactory.fromBitmap(arrow), 10f)
+    val endCap = CustomCap(BitmapDescriptorFactory.fromBitmap(cross), 10f)
+    return addPolyline(
+        PolylineOptions()
             .addAll(latLngs)
+            .startCap(startCap)
+            .endCap(endCap)
+            .jointType(JointType.ROUND)
+            .clickable(true)
             .width(width)
-            .color(ContextCompat.getColor(context, colorRid)))
+            .color(ContextCompat.getColor(context, colorRid))
+    )
 }
 
 fun getLastLocation(): LatLng? {

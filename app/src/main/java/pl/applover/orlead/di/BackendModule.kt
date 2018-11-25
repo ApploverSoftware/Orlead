@@ -1,4 +1,4 @@
-package pl.applover.orlead.main.di
+package pl.applover.orlead.di
 
 import dagger.Module
 import dagger.Provides
@@ -24,7 +24,7 @@ class BackendModule {
 
     private fun create(): OrleadAPI {
         @Suppress("ConstantConditionIf")
-        val baseUrl = "https://google.com"
+        val baseUrl = "https://hack-yeaaah.herokuapp.com/"
 
 
         val logging = HttpLoggingInterceptor().also {
